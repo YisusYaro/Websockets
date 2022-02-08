@@ -1,0 +1,19 @@
+version: '3.8'
+
+networks:
+  my-network:
+
+services:
+
+  websockets-service:
+    image: docker.jesusyaro.com/websockets
+    build:
+      context: ./websockets
+      dockerfile: ./Dockerfile
+    container_name: websockets-container
+    ports:
+      - '3000:3000'
+    networks:
+      - my-network
+    environment:
+      - FRONTEND=frontend.jesusyaro.com
